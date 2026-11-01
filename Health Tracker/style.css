@@ -1,0 +1,123 @@
+/* ضبط الصفحة العامة */
+body {
+    direction: rtl;
+    text-align: right;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f4f8;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* حاوية لوحة التحكم الافتراضية (مخفية حتى يتم تسجيل الدخول) */
+#dashboard-content {
+    display: none; /* ستتغير إلى flex عبر JavaScript عند تسجيل الدخول */
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+/* بطاقة تسجيل الدخول والبطاقات الأخرى والجدول تحت بعضها تماماً */
+.health-card, .table-card, #login-card {
+    background-color: #ffffff;
+    width: 100%;
+    max-width: 500px;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    box-sizing: border-box;
+}
+
+/* عناوين البطاقات */
+h3 {
+    margin-top: 0;
+    color: #1e293b;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 8px;
+    font-size: 18px;
+}
+
+/* مجموعات الحقول */
+.input-group {
+    margin-bottom: 15px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #475569;
+    font-size: 14px;
+}
+
+.input-group input, .input-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+
+/* أزرار الحفظ */
+button[type="submit"], #login-btn {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    font-weight: bold;
+    font-size: 15px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn-bp {
+    background-color: #2563eb;
+}
+.btn-bp:hover {
+    background-color: #1d4ed8;
+}
+
+.btn-sugar {
+    background-color: #0d9488;
+}
+.btn-sugar:hover {
+    background-color: #0f766e;
+}
+
+/* تنسيق الجدول */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid #e2e8f0;
+    text-align: center;
+    font-size: 14px;
+}
+
+th {
+    background-color: #f8fafc;
+    color: #334155;
+}
+
+.delete-btn {
+    background-color: #ef4444;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.delete-btn:hover {
+    background-color: #dc2626;
+}

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>متابع الصحة الشخصي</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- مكتبة Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+
+    <!-- 1. بطاقة تسجيل الدخول (تظهر وحدها في البداية) -->
+    <div class="health-card" id="login-card">
+        <h3>تسجيل الدخول للمتابعة</h3>
+        <div class="input-group">
+            <label for="username-input">اسم المستخدم:</label>
+            <input type="text" id="username-input" placeholder="أدخل اسمك الكريم..." required>
+        </div>
+        <button type="button" class="btn-bp" id="login-btn">دخول</button>
+    </div>
+
+    <!-- 2. لوحة التحكم (مخفية بالكامل ولا تظهر إلا بعد تسجيل الدخول) -->
+    <div id="dashboard-content" style="display: none;">
+        
+        <!-- رسالة الترحيب وزر تسجيل الخروج -->
+        <div id="welcome-message" style="text-align: center; margin-bottom: 10px; font-weight: bold; color: #1e293b; font-size: 18px;"></div>
+        
+        <div style="text-align: center; margin-bottom: 20px;">
+            <button type="button" onclick="logout()" style="background-color: #ef4444; color: white; border: none; padding: 6px 15px; border-radius: 6px; cursor: pointer;">تسجيل خروج</button>
+        </div>
+
+        <!-- نموذج فحص ضغط الدم -->
+        <form class="health-card" id="blood-pressure-form">
+            <h3>قراءة ضغط الدم</h3>
+            
+            <div class="input-group">
+                <label for="bp-date">تاريخ ووقت القياس:</label>
+                <input type="datetime-local" id="bp-date" required>
+            </div>
+
+            <div class="input-group">
+                <label for="Systolic">الضغط الانقباضي (العالي):</label>
+                <input type="number" id="Systolic" placeholder="مثال: 120" required>
+            </div>
+
+            <div class="input-group">
+                <label for="diastolic">الضغط الانبساطي (المنخفض):</label>
+                <input type="number" id="diastolic" placeholder="مثال: 80" required>
+            </div>
+
+            <div class="input-group">
+                <label for="pulse">معدل النبض:</label>
+                <input type="number" id="pulse" placeholder="مثال: 73">
+            </div>
+
+            <button type="submit" class="btn-bp">حفظ قراءة الضغط</button>
+        </form>
+
+        <!-- نموذج فحص سكر الدم -->
+        <form class="health-card" id="blood-sugar-form">
+            <h3>قراءة السكر في الدم</h3>
+
+            <div class="input-group">
+                <label for="sugar-date">تاريخ ووقت القياس:</label>
+                <input type="datetime-local" id="sugar-date" required>
+            </div>
+
+            <div class="input-group">
+                <label for="sugar-level">مستوى السكر (mg/dL):</label>
+                <input type="number" id="sugar-level" placeholder="مثال: 120" required>
+            </div>
+
+            <div class="input-group">
+                <label for="sugar-timing">وقت القياس:</label>
+                <select id="sugar-timing">
+                    <option value="fasting">صائم (صباحاً)</option>
+                    <option value="before-meal">قبل الأكل</option>
+                    <option value="after-meal">بعد الأكل (بساعتين)</option>
+                    <option value="bedtime">قبل النوم</option>
+                    <option value="random">عشوائي</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn-sugar">حفظ قراءة السكر</button>
+        </form>
+
+        <!-- جدول عرض القراءات -->
+        <div class="table-card">
+            <h3>سجل القراءات</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>التاريخ والوقت</th>
+                        <th>نوع الفحص</th>
+                        <th>النتيجة / التفاصيل</th>
+                        <th>إجراء</th>
+                    </tr>
+                </thead>
+                <tbody id="readings-table-body">
+                    <!-- ستظهر القراءات هنا عبر JavaScript -->
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
