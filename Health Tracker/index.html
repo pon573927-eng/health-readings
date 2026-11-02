@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
+    <!-- مكتبة تحويل HTML إلى PDF مع دعم العربية -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <!-- مكتبة jsPDF الأساسية -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <!-- مكتبة autoTable المخصصة لتصدير الجداول -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>متابع الصحة الشخصي</title>
@@ -84,9 +90,11 @@
 
             <button type="submit" class="btn-sugar">حفظ قراءة السكر</button>
         </form>
-
-        <!-- جدول عرض القراءات -->
-        <div class="table-card">
+        <button onclick="window.print()" style="background-color: #f20509; color: white; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; font-weight: bold; margin-bottom: 15px;">
+            📄 حفظ السجل كملف PDF 
+        </button>     
+           <!-- جدول عرض القراءات -->
+        <div class="table-card" id="table-container">
             <h3>سجل القراءات</h3>
             <table>
                 <thead>
@@ -106,5 +114,20 @@
     </div>
 
     <script src="script.js"></script>
+        <!-- نافذة منبثقة مخصصة للتعديل والحذف -->
+    <div id="custom-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); z-index: 1000; justify-content: center; align-items: center;">
+        <div style="background: white; padding: 25px; border-radius: 12px; width: 90%; max-width: 400px; box-shadow: 0 10px 25px rgba(0,0,0,0.2); text-align: right; direction: rtl;">
+            <h3 id="modal-title" style="margin-top: 0; color: #1e293b; font-size: 18px;">العنوان</h3>
+            <p id="modal-desc" style="color: #64748b; font-size: 14px; margin-bottom: 15px;"></p>
+            
+            <!-- حقل الإدخال يظهر فقط عند التعديل -->
+            <input type="text" id="modal-input" style="width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 6px; margin-bottom: 20px; font-size: 14px; box-sizing: border-box;" placeholder="أدخل التفاصيل الجديدة...">
+            
+            <div style="display: flex; gap: 10px; justify-content: flex-end;">
+                <button id="modal-cancel-btn" style="background-color: #e2e8f0; color: #334155; border: none; padding: 8px 16px; border-radius: 6px; cursor: pointer; font-weight: bold;">إلغاء</button>
+                <button id="modal-confirm-btn" style="background-color: #3b82f6; color: white; border: none; padding: 8px 16px; border-radius: 6px; cursor: pointer; font-weight: bold;">حفظ التغييرات</button>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
