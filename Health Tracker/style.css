@@ -121,3 +121,21 @@ th {
 .delete-btn:hover {
     background-color: #dc2626;
 }
+@media print {
+    body * {
+        visibility: hidden;
+    }
+    #export-pdf-btn, button, .no-print {
+        display: none !important;
+    }
+    #table-container, #table-container * {
+        visibility: visible;
+    }
+    #table-container {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100%;
+        direction: rtl;
+    }
+}
